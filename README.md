@@ -1,4 +1,4 @@
-# Next.js CMS Website Template
+# Next.js CMS
 
 🚀 Next.js Customizable CMS
 Welcome to my Next.js CMS project! This repository is a demonstration of how Next.js can be used to build a powerful and flexible CMS. It includes several custom blocks to extend functionality and enhance user experiences.
