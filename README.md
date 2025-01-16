@@ -74,6 +74,7 @@ Open a pull request.
 If you have any questions or suggestions, feel free to reach out:
 
 LinkedIn: https://www.linkedin.com/in/muhammad-tayyab-software-developer/
+
 Email: tayyabmajeed153@gmail.com
 
 Let’s build something amazing together! 💻✨
