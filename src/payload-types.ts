@@ -136,7 +136,6 @@ export interface Page {
     | FormBlock
     | CountersBlock
     | SectionsHeading
-    | CornerCardsBlock
     | UpComingEventsBlock
     | LearnEnglishBlock
     | FriendsCornerBlock
@@ -724,41 +723,6 @@ export interface SectionsHeading {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CornerCardsBlock".
- */
-export interface CornerCardsBlock {
-  desc?: string | null;
-  image: number | Media;
-  links?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cornercardsblock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "UpComingEventsBlock".
  */
 export interface UpComingEventsBlock {
@@ -1127,7 +1091,6 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         counter?: T | CountersBlockSelect<T>;
         section?: T | SectionsHeadingSelect<T>;
-        cornercardsblock?: T | CornerCardsBlockSelect<T>;
         upcomingevents?: T | UpComingEventsBlockSelect<T>;
         learnEnglish?: T | LearnEnglishBlockSelect<T>;
         friendscorner?: T | FriendsCornerBlockSelect<T>;
@@ -1256,31 +1219,6 @@ export interface SectionsHeadingSelect<T extends boolean = true> {
   title?: T;
   richText?: T;
   backgroundColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CornerCardsBlock_select".
- */
-export interface CornerCardsBlockSelect<T extends boolean = true> {
-  desc?: T;
-  image?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
   id?: T;
   blockName?: T;
 }

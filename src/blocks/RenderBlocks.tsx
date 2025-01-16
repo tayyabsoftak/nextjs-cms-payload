@@ -10,7 +10,6 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { CountersBlock } from './Counter/Component'
 import { SectionsHeading } from './SectionHeading/Component'
-import { CornerCardsBlock } from './CustomHtml/Component'
 import { UpComingEventsBlock } from './UpComingEventsBlock/Component'
 import { LearnEnglishBlock } from './LearnEnglishBlock/Component'
 import { FriendsCornerBlock } from './FriendsCornerBlock/Component'
@@ -25,7 +24,6 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   counter: CountersBlock,
   section: SectionsHeading,
-  cornercardsblock: CornerCardsBlock,
   upcomingevents: UpComingEventsBlock,
   learnEnglish: LearnEnglishBlock,
   friendscorner: FriendsCornerBlock,

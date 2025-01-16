@@ -22,7 +22,6 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { Sections } from '@/blocks/SectionHeading/config'
-import { CornerCardsBlock } from '@/blocks/CustomHtml/config'
 import { UpComingEventsBlock } from '@/blocks/UpComingEventsBlock/config'
 import { LearnEnglishBlock } from '@/blocks/LearnEnglishBlock/config'
 import { FriendsCornerBlock } from '@/blocks/FriendsCornerBlock/config'
@@ -91,7 +90,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 Counters,
                 Sections,
-                CornerCardsBlock,
                 UpComingEventsBlock,
                 LearnEnglishBlock,
                 FriendsCornerBlock,
