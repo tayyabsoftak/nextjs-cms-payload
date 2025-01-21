@@ -28,7 +28,7 @@ export const GetinTouchBlock: React.FC<GetinTouchProps> = ({
         <div
           className="bg-[#034FA3] w-full lg:w-2/3 rounded-2xl relative flex h-screen md:h-auto"
           style={{
-            backgroundImage: 'url(/bg-contact.svg)',
+            backgroundImage: 'url(/yourimage.svg)',
           }}
         >
           <div className="absolute flex flex-col items-center justify-center w-full h-full text-white lg:p-10 cursor-pointer">

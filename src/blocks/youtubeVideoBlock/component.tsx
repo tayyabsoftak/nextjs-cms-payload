@@ -7,7 +7,7 @@ const YoutubeVideoBlock: React.FC<any> = ({ link }) => {
       <div
         className="h-screen flex relative mt-5 cursor-pointer"
         style={{
-          backgroundImage: 'url(/)',
+          backgroundImage: 'url(/your-image)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',

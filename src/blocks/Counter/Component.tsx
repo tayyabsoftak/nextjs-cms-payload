@@ -37,7 +37,7 @@ export const CountersBlock: React.FC<CountProps> = (props) => {
       ref={sectionRef}
       className="md:h-72 flex relative mt-20"
       style={{
-        backgroundImage: 'url(/number-load-image.svg)',
+        backgroundImage: 'url(/your-own-image.svg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
