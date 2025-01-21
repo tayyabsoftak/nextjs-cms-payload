@@ -125,7 +125,12 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
+    media?:
+      | {
+          image: number | Media;
+          id?: string | null;
+        }[]
+      | null;
     backgroundColor?: ('bg-white' | 'bg-gray-200' | 'bg-black text-white') | null;
   };
   layout: (
@@ -136,6 +141,8 @@ export interface Page {
     | FormBlock
     | CountersBlock
     | SectionsHeading
+    | CornerCardsBlock
+    | YoutubeVideoBlock
     | UpComingEventsBlock
     | LearnEnglishBlock
     | FriendsCornerBlock
@@ -684,7 +691,7 @@ export interface Form {
 export interface CountersBlock {
   columns?:
     | {
-        heading?: string | null;
+        heading?: number | null;
         content?: string | null;
         id?: string | null;
       }[]
@@ -723,6 +730,34 @@ export interface SectionsHeading {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornerCardsBlock".
+ */
+export interface CornerCardsBlock {
+  cards?:
+    | {
+        desc?: string | null;
+        image?: (number | null) | Media;
+        linkText?: string | null;
+        linkUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cornercardsblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YoutubeVideoBlock".
+ */
+export interface YoutubeVideoBlock {
+  link?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'youtubevideo';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "UpComingEventsBlock".
  */
 export interface UpComingEventsBlock {
@@ -746,7 +781,6 @@ export interface UpComingEventsBlock {
         id?: string | null;
       }[]
     | null;
-  link?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'upcomingevents';
@@ -829,11 +863,21 @@ export interface FriendsCornerBlock {
  * via the `definition` "FaqBlock".
  */
 export interface FaqBlock {
-  title?: string | null;
-  faqs?:
+  accordion?:
     | {
-        question: string;
-        answere: string;
+        title?: string | null;
+        faqs?:
+          | {
+              question: string;
+              answere: {
+                address: string;
+                phone: string;
+                email: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1078,7 +1122,12 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        media?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
         backgroundColor?: T;
       };
   layout?:
@@ -1091,6 +1140,8 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         counter?: T | CountersBlockSelect<T>;
         section?: T | SectionsHeadingSelect<T>;
+        cornercardsblock?: T | CornerCardsBlockSelect<T>;
+        youtubevideo?: T | YoutubeVideoBlockSelect<T>;
         upcomingevents?: T | UpComingEventsBlockSelect<T>;
         learnEnglish?: T | LearnEnglishBlockSelect<T>;
         friendscorner?: T | FriendsCornerBlockSelect<T>;
@@ -1224,6 +1275,32 @@ export interface SectionsHeadingSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornerCardsBlock_select".
+ */
+export interface CornerCardsBlockSelect<T extends boolean = true> {
+  cards?:
+    | T
+    | {
+        desc?: T;
+        image?: T;
+        linkText?: T;
+        linkUrl?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "YoutubeVideoBlock_select".
+ */
+export interface YoutubeVideoBlockSelect<T extends boolean = true> {
+  link?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "UpComingEventsBlock_select".
  */
 export interface UpComingEventsBlockSelect<T extends boolean = true> {
@@ -1247,7 +1324,6 @@ export interface UpComingEventsBlockSelect<T extends boolean = true> {
         public?: T;
         id?: T;
       };
-  link?: T;
   id?: T;
   blockName?: T;
 }
@@ -1295,12 +1371,24 @@ export interface FriendsCornerBlockSelect<T extends boolean = true> {
  * via the `definition` "FaqBlock_select".
  */
 export interface FaqBlockSelect<T extends boolean = true> {
-  title?: T;
-  faqs?:
+  accordion?:
     | T
     | {
-        question?: T;
-        answere?: T;
+        title?: T;
+        faqs?:
+          | T
+          | {
+              question?: T;
+              answere?:
+                | T
+                | {
+                    address?: T;
+                    phone?: T;
+                    email?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
         id?: T;
       };
   image?: T;

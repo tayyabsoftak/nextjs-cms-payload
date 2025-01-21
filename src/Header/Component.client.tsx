@@ -11,6 +11,7 @@ import { Logo } from '@/components/Logo/Logo'
 import clsx from 'clsx'
 import { PhoneCall, SearchIcon } from 'lucide-react'
 import { HeaderNav } from './Nav'
+import { useMenu } from '@/context'
 
 interface HeaderClientProps {
   data: Header
@@ -21,6 +22,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
+  const { isMenuOpen, toggleMenu } = useMenu()
 
   useEffect(() => {
     setHeaderTheme(null)
@@ -32,11 +34,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   return (
     <header className="relative z-20 bg-white py-2" {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="px-5">
+      <div className="container">
         <div className="flex justify-between items-center">
           <Link href="/">
             <Logo loading="eager" priority="high" className="invert dark:invert-0" />
@@ -86,9 +86,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </button>
           </div>
           <ul>
-            <li>
-              <HeaderNav data={data} />
-            </li>
+            <HeaderNav data={data} />
           </ul>
         </div>
       </div>

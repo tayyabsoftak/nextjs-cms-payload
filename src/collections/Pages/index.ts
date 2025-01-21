@@ -22,11 +22,13 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { Sections } from '@/blocks/SectionHeading/config'
+import { CornerCardsBlock } from '@/blocks/CustomHtml/config'
 import { UpComingEventsBlock } from '@/blocks/UpComingEventsBlock/config'
 import { LearnEnglishBlock } from '@/blocks/LearnEnglishBlock/config'
 import { FriendsCornerBlock } from '@/blocks/FriendsCornerBlock/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
 import { GetinTouchBlock } from '@/blocks/GetinTouchBlock/config'
+import { YoutubeVideoBlock } from '@/blocks/youtubeVideoBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -90,6 +92,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 Counters,
                 Sections,
+                CornerCardsBlock,
+                YoutubeVideoBlock,
                 UpComingEventsBlock,
                 LearnEnglishBlock,
                 FriendsCornerBlock,

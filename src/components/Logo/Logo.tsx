@@ -16,12 +16,12 @@ export const Logo = (props: Props) => {
   return (
     /* eslint-disable @next/next/no-img-element */
     <img
-      alt="Payload Logo"
+      src="/logo.png"
+      alt="Logo"
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('cursor-pointer h-16', className)}
-      src="logo.svg"
+      className={clsx('cursor-pointer h-16')}
     />
   )
 }

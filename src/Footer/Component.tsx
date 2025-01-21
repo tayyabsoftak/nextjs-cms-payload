@@ -44,7 +44,7 @@ export async function Footer() {
   return (
     <footer className="bg-[#072C49] w-full md:px-20 py-8 px-10 text-white">
       <div className="container py-8 flex flex-col md:flex-row md:justify-between">
-        <div className="flex flex-col space-y-6 lg:col-span-1 items-start">
+        <div className="flex flex-col space-y-6 lg:col-span-1 items-start mb-5 md:mb-0">
           <Link className="flex items-center" href="/">
             <Logo />
           </Link>

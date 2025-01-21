@@ -72,12 +72,6 @@ export const UpComingEventsBlock: Block = {
         },
       ],
     },
-    {
-      name: 'link',
-      type: 'text',
-      label: 'Youtube Video Link',
-      required: false,
-    },
   ],
   labels: {
     singular: 'Upcoming Event Block',

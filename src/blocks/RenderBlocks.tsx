@@ -10,11 +10,13 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { CountersBlock } from './Counter/Component'
 import { SectionsHeading } from './SectionHeading/Component'
+import { CornerCardsBlock } from './CustomHtml/Component'
 import { UpComingEventsBlock } from './UpComingEventsBlock/Component'
 import { LearnEnglishBlock } from './LearnEnglishBlock/Component'
 import { FriendsCornerBlock } from './FriendsCornerBlock/Component'
 import { FaqBlock } from './FaqBlock/Component'
 import { GetinTouchBlock } from './GetinTouchBlock/Component'
+import YoutubeVideoBlock from './youtubeVideoBlock/component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -24,6 +26,8 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   counter: CountersBlock,
   section: SectionsHeading,
+  youtubevideo: YoutubeVideoBlock,
+  cornercardsblock: CornerCardsBlock,
   upcomingevents: UpComingEventsBlock,
   learnEnglish: LearnEnglishBlock,
   friendscorner: FriendsCornerBlock,

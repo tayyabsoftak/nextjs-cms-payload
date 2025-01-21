@@ -33,7 +33,7 @@ export const LearnEnglishBlock: Block = {
       type: 'array',
       label: 'Cards',
       minRows: 1,
-      maxRows: 3,
+      maxRows: 6,
       fields: [
         {
           name: 'title',

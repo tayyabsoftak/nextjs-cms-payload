@@ -14,7 +14,7 @@ export const FriendsCornerBlock: Block = {
       type: 'text',
     },
     {
-      name: 'subtitle',
+      name: 'subtitle', // i want here h4 text how
       type: 'text',
       label: 'SubHeading',
     },

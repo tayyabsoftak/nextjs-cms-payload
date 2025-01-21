@@ -24,7 +24,7 @@ export const Counters: Block = {
       fields: [
         {
           name: 'heading',
-          type: 'text',
+          type: 'number',
           label: 'Heading',
         },
         {
