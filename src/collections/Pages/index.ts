@@ -2,12 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Counters } from '@/blocks/Counter/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
+
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -21,14 +16,22 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { Sections } from '@/blocks/SectionHeading/config'
-import { CornerCardsBlock } from '@/blocks/CustomHtml/config'
-import { UpComingEventsBlock } from '@/blocks/UpComingEventsBlock/config'
-import { LearnEnglishBlock } from '@/blocks/LearnEnglishBlock/config'
-import { FriendsCornerBlock } from '@/blocks/FriendsCornerBlock/config'
-import { FaqBlock } from '@/blocks/FaqBlock/config'
-import { GetinTouchBlock } from '@/blocks/GetinTouchBlock/config'
-import { YoutubeVideoBlock } from '@/blocks/youtubeVideoBlock/config'
+import { CallToAction } from '@/app/blocks/CallToAction/config'
+import { Content } from '@/app/blocks/Content/config'
+import { MediaBlock } from '@/app/blocks/MediaBlock/config'
+import { Archive } from '@/app/blocks/ArchiveBlock/config'
+import { FormBlock } from '@/app/blocks/Form/config'
+import { Counters } from '@/app/blocks/CounterBlock/config'
+import { Sections } from '@/app/blocks/SectionHeading/config'
+import { UpComingEventsBlock } from '@/app/blocks/UpComingEventsBlock/config'
+import { FriendsCornerBlock } from '@/app/blocks/FriendsCornerBlock/config'
+import { FaqBlock } from '@/app/blocks/FaqBlock/config'
+import { GetinTouchBlock } from '@/app/blocks/GetinTouchBlock/config'
+import { CornerCardsBlock } from '@/app/blocks/CustomHtml/config'
+import { HomeVideoBlock } from '@/app/blocks/HomeVideoBlock/config'
+import { SixPillarsBlock } from '@/app/blocks/SixPillarsBlock/config'
+import { CornersPakistanAddresses } from '@/app/blocks/CornersPakistanAddressBlock/config'
+import { ContactPageBlock } from '@/app/blocks/ContactPageBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -93,12 +96,14 @@ export const Pages: CollectionConfig<'pages'> = {
                 Counters,
                 Sections,
                 CornerCardsBlock,
-                YoutubeVideoBlock,
+                HomeVideoBlock,
                 UpComingEventsBlock,
-                LearnEnglishBlock,
+                SixPillarsBlock,
                 FriendsCornerBlock,
                 FaqBlock,
                 GetinTouchBlock,
+                CornersPakistanAddresses,
+                ContactPageBlock,
               ],
               required: true,
               admin: {

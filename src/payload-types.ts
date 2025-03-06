@@ -142,12 +142,14 @@ export interface Page {
     | CountersBlock
     | SectionsHeading
     | CornerCardsBlock
-    | YoutubeVideoBlock
+    | HomeVideoBlock
     | UpComingEventsBlock
-    | LearnEnglishBlock
+    | SixPillarsBlock
     | FriendsCornerBlock
     | FaqBlock
     | GetinTouchBlock
+    | CornersPakistanAddresses
+    | ContactPageBlock
   )[];
   meta?: {
     title?: string | null;
@@ -691,7 +693,7 @@ export interface Form {
 export interface CountersBlock {
   columns?:
     | {
-        heading?: number | null;
+        heading?: string | null;
         content?: string | null;
         id?: string | null;
       }[]
@@ -748,13 +750,13 @@ export interface CornerCardsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "YoutubeVideoBlock".
+ * via the `definition` "HomeVideoBlock".
  */
-export interface YoutubeVideoBlock {
-  link?: string | null;
+export interface HomeVideoBlock {
+  video?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'youtubevideo';
+  blockType: 'homevideoblock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -787,9 +789,9 @@ export interface UpComingEventsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "LearnEnglishBlock".
+ * via the `definition` "SixPillarsBlock".
  */
-export interface LearnEnglishBlock {
+export interface SixPillarsBlock {
   title?: string | null;
   richText?: {
     root: {
@@ -818,7 +820,7 @@ export interface LearnEnglishBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'learnEnglish';
+  blockType: 'sixpillarsblock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -842,10 +844,11 @@ export interface FriendsCornerBlock {
     };
     [k: string]: unknown;
   } | null;
-  backgroundColor?:
-    | ('bg-white' | 'bg-gray-200' | 'bg-black text-white' | 'bg-[#D5E8DE]' | 'bg-[#F0F0F0]' | 'bg-[#072C49] text-white')
-    | null;
-  image: number | Media;
+  images: {
+    image?: (number | null) | Media;
+    link?: string | null;
+    id?: string | null;
+  }[];
   reviews?:
     | {
         title: string;
@@ -937,6 +940,45 @@ export interface GetinTouchBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'getintouch';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornersPakistanAddresses".
+ */
+export interface CornersPakistanAddresses {
+  places?:
+    | {
+        placeName: string;
+        addressInfo: {
+          campusName: string;
+          fullAddress: string;
+          contactNumber: string;
+          emailAddress: string;
+          mapaddress?: string | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cornerspakistanaddress';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactPageBlock".
+ */
+export interface ContactPageBlock {
+  title?: string | null;
+  contactdesc?: string | null;
+  visitaddress?: string | null;
+  phoneno?: string | null;
+  contactemail?: string | null;
+  form?: (number | null) | Form;
+  websitelink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactpage';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1141,12 +1183,14 @@ export interface PagesSelect<T extends boolean = true> {
         counter?: T | CountersBlockSelect<T>;
         section?: T | SectionsHeadingSelect<T>;
         cornercardsblock?: T | CornerCardsBlockSelect<T>;
-        youtubevideo?: T | YoutubeVideoBlockSelect<T>;
+        homevideoblock?: T | HomeVideoBlockSelect<T>;
         upcomingevents?: T | UpComingEventsBlockSelect<T>;
-        learnEnglish?: T | LearnEnglishBlockSelect<T>;
+        sixpillarsblock?: T | SixPillarsBlockSelect<T>;
         friendscorner?: T | FriendsCornerBlockSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
         getintouch?: T | GetinTouchBlockSelect<T>;
+        cornerspakistanaddress?: T | CornersPakistanAddressesSelect<T>;
+        contactpage?: T | ContactPageBlockSelect<T>;
       };
   meta?:
     | T
@@ -1292,10 +1336,10 @@ export interface CornerCardsBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "YoutubeVideoBlock_select".
+ * via the `definition` "HomeVideoBlock_select".
  */
-export interface YoutubeVideoBlockSelect<T extends boolean = true> {
-  link?: T;
+export interface HomeVideoBlockSelect<T extends boolean = true> {
+  video?: T;
   id?: T;
   blockName?: T;
 }
@@ -1329,9 +1373,9 @@ export interface UpComingEventsBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "LearnEnglishBlock_select".
+ * via the `definition` "SixPillarsBlock_select".
  */
-export interface LearnEnglishBlockSelect<T extends boolean = true> {
+export interface SixPillarsBlockSelect<T extends boolean = true> {
   title?: T;
   richText?: T;
   cards?:
@@ -1353,8 +1397,13 @@ export interface FriendsCornerBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   richText?: T;
-  backgroundColor?: T;
-  image?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        link?: T;
+        id?: T;
+      };
   reviews?:
     | T
     | {
@@ -1429,6 +1478,45 @@ export interface GetinTouchBlockSelect<T extends boolean = true> {
   subDescription?: T;
   richText?: T;
   backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornersPakistanAddresses_select".
+ */
+export interface CornersPakistanAddressesSelect<T extends boolean = true> {
+  places?:
+    | T
+    | {
+        placeName?: T;
+        addressInfo?:
+          | T
+          | {
+              campusName?: T;
+              fullAddress?: T;
+              contactNumber?: T;
+              emailAddress?: T;
+              mapaddress?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactPageBlock_select".
+ */
+export interface ContactPageBlockSelect<T extends boolean = true> {
+  title?: T;
+  contactdesc?: T;
+  visitaddress?: T;
+  phoneno?: T;
+  contactemail?: T;
+  form?: T;
+  websitelink?: T;
   id?: T;
   blockName?: T;
 }
