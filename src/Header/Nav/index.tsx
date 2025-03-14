@@ -1,14 +1,21 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CMSLink } from '@/components/Link'
 import type { Header } from '@/payload-types'
 import { GoPlus } from 'react-icons/go'
 import { HiOutlineMinusSmall } from 'react-icons/hi2'
+import { useMenu } from '@/context'
 
 export const HeaderNav: React.FC<{ data: Header; className?: string }> = ({ data, className }) => {
   const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(null)
+  const [currentPath, setCurrentPath] = useState<string>('')
+  const { toggleMenu } = useMenu()
+
   const navItems = data?.navItems || []
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
+
+  useEffect(() => {
+    setCurrentPath(window.location.pathname)
+  }, [])
 
   const toggleDropdown = (index: number) => {
     setOpenDropdownIndex(openDropdownIndex === index ? null : index)
@@ -23,18 +30,24 @@ export const HeaderNav: React.FC<{ data: Header; className?: string }> = ({ data
         const hasDropdown = dropDownMenu!.length > 0
         const isActive = currentPath === link.url
         const isDropdownOpen = openDropdownIndex === i
-        console.log(currentPath, link.url, isActive, 'linkkkkkkkkkkkkk')
         return (
           <div key={navItem.id || i} className="relative group md:block w-full md:w-auto">
             {/* Main Link */}
             <div
-              className={`flex justify-between items-center bg-[#FAFAFA] mx-5 mb-4 md:mx-0 md:mb-0 rounded-md ${isActive ? 'border-b-2 border-green-700 text-white' : ''}`}
+              className={`flex justify-center items-center bg-[#FAFAFA] mx-5 mb-4 md:mx-0 md:mb-0 rounded-md ${
+                isActive ? 'border-b-2 border-green-700 text-white' : ''
+              }`}
             >
               <CMSLink
                 {...link}
                 appearance="link"
-                className={`hover:no-underline text-gray-700 p-3 flex-grow`}
+                onClick={() => toggleMenu()}
+                className="hover:no-underline text-gray-700 p-3 flex-grow"
               />
+              {hasDropdown && (
+                <img src="/down.svg" alt="down-icon" className="w-4 h-4 hidden md:block" />
+              )}
+
               {hasDropdown && (
                 <button
                   type="button"
@@ -59,10 +72,11 @@ export const HeaderNav: React.FC<{ data: Header; className?: string }> = ({ data
               >
                 {dropDownMenu?.map((dropdownLink, subIndex) => (
                   <CMSLink
+                    onClick={() => toggleMenu()}
                     key={dropdownLink.id || subIndex}
                     {...dropdownLink.link}
                     appearance="link"
-                    className="hover:no-underline ml-5 md:ml-0 block p-2 text-gray-700 hover:bg-gray-100"
+                    className="hover:no-underline md:border-b-2 border-green-700 ml-5 md:ml-0 block p-2 text-gray-700 hover:bg-gray-100"
                   />
                 ))}
               </div>

@@ -24,6 +24,7 @@ export const Number: React.FC<
         defaultValue={defaultValue}
         id={name}
         type="number"
+        placeholder="Enter your numer"
         {...register(name, { required: requiredFromProps })}
       />
       {requiredFromProps && errors[name] && <Error />}

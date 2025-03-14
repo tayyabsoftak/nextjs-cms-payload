@@ -14,7 +14,7 @@ export const FriendsCornerBlock: Block = {
       type: 'text',
     },
     {
-      name: 'subtitle',
+      name: 'subtitle', // i want here h4 text how
       type: 'text',
       label: 'SubHeading',
     },
@@ -33,25 +33,26 @@ export const FriendsCornerBlock: Block = {
       }),
       label: false,
     },
-
     {
-      name: 'backgroundColor',
-      type: 'select',
-      options: [
-        { label: 'White', value: 'bg-white' },
-        { label: 'Gray', value: 'bg-gray-200' },
-        { label: 'Black', value: 'bg-black text-white' },
-        { label: 'Light Green', value: 'bg-[#D5E8DE]' },
-        { label: 'Light Gray', value: 'bg-[#F0F0F0]' },
-        { label: 'Dark Blue', value: 'bg-[#072C49] text-white' },
-      ],
-    },
-    {
-      name: 'image',
-      type: 'upload',
-      label: 'Image',
-      relationTo: 'media',
+      name: 'images',
+      type: 'array',
+      label: 'Video Card',
       required: true,
+      minRows: 1,
+      maxRows: 3,
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Image',
+        },
+        {
+          name: 'link',
+          type: 'text',
+          label: 'Link',
+        },
+      ],
     },
     {
       name: 'reviews',

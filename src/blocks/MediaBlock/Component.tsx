@@ -5,8 +5,7 @@ import React from 'react'
 import RichText from '@/components/RichText'
 
 import type { MediaBlock as MediaBlockProps } from '@/payload-types'
-
-import { Media } from '../../components/Media'
+import { Media } from '@/components/Media'
 
 type Props = MediaBlockProps & {
   breakout?: boolean

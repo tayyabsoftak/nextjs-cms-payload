@@ -16,8 +16,9 @@ export const GetinTouchBlock: React.FC<GetinTouchProps> = ({
   form,
 }) => {
   const transformedForm: any | null = typeof form === 'object' && form !== null ? form : null
+
   return (
-    <div className={`mt-5 ${backgroundColor} p-5`}>
+    <div className={`${backgroundColor} p-5`}>
       <div className="sm:p-10 lg:p-20 flex flex-col lg:flex-row gap-10 lg:gap-10">
         {/* Contact Form Section */}
         <div className="w-full lg:w-1/2">

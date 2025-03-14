@@ -5,53 +5,83 @@ export const FaqBlock: Block = {
   interfaceName: 'FaqBlock',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-    },
-    {
-      name: 'faqs',
+      name: 'accordion', // Array of Titles
       type: 'array',
-      label: 'FAQ',
       minRows: 1,
-      maxRows: 6,
+      maxRows: 4,
       fields: [
         {
-          name: 'question',
+          name: 'title', // Title field for each FAQ section
           type: 'text',
-          label: 'Faq Question',
-          required: true,
         },
         {
-          name: 'answere',
-          type: 'text',
-          label: 'Faq Answere',
-          required: true,
+          name: 'faqs',
+          type: 'array',
+          label: 'FAQ',
+          minRows: 1,
+          maxRows: 5,
+          fields: [
+            {
+              name: 'question',
+              type: 'text',
+              label: 'Faq Question',
+              required: true,
+            },
+            {
+              name: 'answere', // Answers with address, phone, and email
+              type: 'array',
+              label: 'Faq Answer',
+              required: true,
+              minRows: 1,
+              maxRows: 1,
+              fields: [
+                {
+                  name: 'address',
+                  type: 'text',
+                  label: 'Address',
+                  required: true,
+                },
+                {
+                  name: 'phone',
+                  type: 'text',
+                  label: 'Phone No',
+                  required: true,
+                },
+                {
+                  name: 'email',
+                  type: 'text',
+                  label: 'Email',
+                  required: true,
+                },
+              ],
+            },
+          ],
         },
       ],
     },
     {
-      name: 'image',
+      name: 'image', // Map Image for the FAQ block
       type: 'upload',
-      label: 'Image',
+      label: 'Map Image',
       relationTo: 'media',
       required: true,
     },
     {
-      name: 'cities',
+      name: 'cities', // Array of cities with images and names
       type: 'array',
-      label: 'Add Citiy Name and image',
+      label: 'Add city image and name',
       minRows: 1,
-      maxRows: 6,
+      maxRows: 4,
       fields: [
         {
-          name: 'image',
+          name: 'image', // Image of the city
           type: 'upload',
           label: 'Image',
           relationTo: 'media',
           required: true,
         },
         {
-          name: 'cityname',
+          name: 'cityname', // City Name
           type: 'text',
           label: 'City Name',
           required: true,

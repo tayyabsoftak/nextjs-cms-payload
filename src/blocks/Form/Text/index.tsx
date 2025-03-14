@@ -25,6 +25,7 @@ export const Text: React.FC<
         defaultValue={defaultValue}
         id={name}
         type="text"
+        placeholder="Enter your name"
         {...register(name, { required: requiredFromProps })}
       />
       {requiredFromProps && errors[name] && <Error />}

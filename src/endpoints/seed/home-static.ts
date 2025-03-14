@@ -20,7 +20,7 @@ export const homeStatic: Page = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Payload Website Template',
+                text: 'Lincoln Corners Pakistan',
                 version: 1,
               },
             ],
@@ -82,7 +82,7 @@ export const homeStatic: Page = {
   },
   meta: {
     description: 'An open-source website built with Payload and Next.js.',
-    title: 'Payload Website Template',
+    title: 'Lincoln Corners Pakistan',
   },
   title: 'Home',
 }

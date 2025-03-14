@@ -3,18 +3,22 @@ import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
 
-import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
-import { CallToActionBlock } from '@/blocks/CallToAction/Component'
-import { ContentBlock } from '@/blocks/Content/Component'
-import { FormBlock } from '@/blocks/Form/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { CountersBlock } from './Counter/Component'
+import { CountersBlock } from './CounterBlock/Component'
 import { SectionsHeading } from './SectionHeading/Component'
+import { CornerCardsBlock } from './CustomHtml/Component'
 import { UpComingEventsBlock } from './UpComingEventsBlock/Component'
-import { LearnEnglishBlock } from './LearnEnglishBlock/Component'
+import { SixPillarsBlock } from './SixPillarsBlock/Component'
 import { FriendsCornerBlock } from './FriendsCornerBlock/Component'
 import { FaqBlock } from './FaqBlock/Component'
 import { GetinTouchBlock } from './GetinTouchBlock/Component'
+import CornersPakistanAddresses from './CornersPakistanAddressBlock/Component'
+import ContactPageBlock from './ContactPageBlock/component'
+import HomeVideoBlock from './HomeVideoBlock/component'
+import { ArchiveBlock } from './ArchiveBlock/Component'
+import { ContentBlock } from './Content/Component'
+import { CallToActionBlock } from './CallToAction/Component'
+import { FormBlock } from './Form/Component'
+import { MediaBlock } from './MediaBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -24,11 +28,15 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   counter: CountersBlock,
   section: SectionsHeading,
+  homevideoblock: HomeVideoBlock,
+  cornercardsblock: CornerCardsBlock,
   upcomingevents: UpComingEventsBlock,
-  learnEnglish: LearnEnglishBlock,
+  sixpillarsblock: SixPillarsBlock,
   friendscorner: FriendsCornerBlock,
   faqblock: FaqBlock,
   getintouch: GetinTouchBlock,
+  cornerspakistanaddress: CornersPakistanAddresses,
+  contactpage: ContactPageBlock,
 }
 
 export const RenderBlocks: React.FC<{

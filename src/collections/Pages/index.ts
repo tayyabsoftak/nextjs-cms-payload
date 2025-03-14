@@ -2,18 +2,29 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Counters } from '@/blocks/Counter/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { hero } from '@/heros/config'
+
 import { slugField } from '@/fields/slug'
+import { hero } from '@/heros/config'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
+import { Archive } from '@/blocks/ArchiveBlock/config'
+import { CallToAction } from '@/blocks/CallToAction/config'
+import { ContactPageBlock } from '@/blocks/ContactPageBlock/config'
+import { Content } from '@/blocks/Content/config'
+import { CornersPakistanAddresses } from '@/blocks/CornersPakistanAddressBlock/config'
+import { Counters } from '@/blocks/CounterBlock/config'
+import { CornerCardsBlock } from '@/blocks/CustomHtml/config'
+import { FaqBlock } from '@/blocks/FaqBlock/config'
+import { FormBlock } from '@/blocks/Form/config'
+import { FriendsCornerBlock } from '@/blocks/FriendsCornerBlock/config'
+import { GetinTouchBlock } from '@/blocks/GetinTouchBlock/config'
+import { HomeVideoBlock } from '@/blocks/HomeVideoBlock/config'
+import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { Sections } from '@/blocks/SectionHeading/config'
+import { SixPillarsBlock } from '@/blocks/SixPillarsBlock/config'
+import { UpComingEventsBlock } from '@/blocks/UpComingEventsBlock/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -21,12 +32,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { Sections } from '@/blocks/SectionHeading/config'
-import { UpComingEventsBlock } from '@/blocks/UpComingEventsBlock/config'
-import { LearnEnglishBlock } from '@/blocks/LearnEnglishBlock/config'
-import { FriendsCornerBlock } from '@/blocks/FriendsCornerBlock/config'
-import { FaqBlock } from '@/blocks/FaqBlock/config'
-import { GetinTouchBlock } from '@/blocks/GetinTouchBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -90,11 +95,15 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 Counters,
                 Sections,
+                CornerCardsBlock,
+                HomeVideoBlock,
                 UpComingEventsBlock,
-                LearnEnglishBlock,
+                SixPillarsBlock,
                 FriendsCornerBlock,
                 FaqBlock,
                 GetinTouchBlock,
+                CornersPakistanAddresses,
+                ContactPageBlock,
               ],
               required: true,
               admin: {

@@ -60,12 +60,20 @@ export const hero: Field = {
     }),
     {
       name: 'media',
-      type: 'upload',
+      type: 'array',
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },
-      relationTo: 'media',
-      required: true,
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
+      minRows: 3,
+      maxRows: 5,
     },
     {
       name: 'backgroundColor',

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { UpComingEventsBlock as EventsProps } from '@/payload-types'
 
-export const UpComingEventsBlock: React.FC<EventsProps> = ({ year, months, cards, link }) => {
+export const UpComingEventsBlock: React.FC<EventsProps> = ({ year, months, cards }) => {
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null)
 
   const filteredCards = selectedMonth ? cards?.filter((card) => card.date === selectedMonth) : cards
@@ -62,25 +62,10 @@ export const UpComingEventsBlock: React.FC<EventsProps> = ({ year, months, cards
           ))}
         </div>
       </div>
-      <button className="bg-green-700 text-white px-4 py-3 mx-auto rounded-md w-[14rem] flex items-center justify-center space-x-2 group mt-5">
+      <button className="bg-green-700 text-white px-4 py-3 mx-auto rounded-md w-[14rem] flex items-center justify-center space-x-2 group my-8">
         <span>Explore More Events</span>
         <ArrowRight className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
       </button>
-      <div
-        className="h-screen flex relative mt-20 cursor-pointer"
-        style={{
-          backgroundImage: 'url(/image-22.svg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}
-      >
-        <div className="relative mx-auto flex items-center">
-          <Link href={`${link}`} target="blank" rel="noopener noreferrer">
-            <img src="/youtube-2.svg" alt="youtube-icon" />
-          </Link>
-        </div>
-      </div>
     </>
   )
 }

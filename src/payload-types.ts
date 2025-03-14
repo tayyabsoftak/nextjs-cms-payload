@@ -125,7 +125,12 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
+    media?:
+      | {
+          image: number | Media;
+          id?: string | null;
+        }[]
+      | null;
     backgroundColor?: ('bg-white' | 'bg-gray-200' | 'bg-black text-white') | null;
   };
   layout: (
@@ -136,11 +141,15 @@ export interface Page {
     | FormBlock
     | CountersBlock
     | SectionsHeading
+    | CornerCardsBlock
+    | HomeVideoBlock
     | UpComingEventsBlock
-    | LearnEnglishBlock
+    | SixPillarsBlock
     | FriendsCornerBlock
     | FaqBlock
     | GetinTouchBlock
+    | CornersPakistanAddresses
+    | ContactPageBlock
   )[];
   meta?: {
     title?: string | null;
@@ -723,6 +732,34 @@ export interface SectionsHeading {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornerCardsBlock".
+ */
+export interface CornerCardsBlock {
+  cards?:
+    | {
+        desc?: string | null;
+        image?: (number | null) | Media;
+        linkText?: string | null;
+        linkUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cornercardsblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HomeVideoBlock".
+ */
+export interface HomeVideoBlock {
+  video?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'homevideoblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "UpComingEventsBlock".
  */
 export interface UpComingEventsBlock {
@@ -746,16 +783,15 @@ export interface UpComingEventsBlock {
         id?: string | null;
       }[]
     | null;
-  link?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'upcomingevents';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "LearnEnglishBlock".
+ * via the `definition` "SixPillarsBlock".
  */
-export interface LearnEnglishBlock {
+export interface SixPillarsBlock {
   title?: string | null;
   richText?: {
     root: {
@@ -784,7 +820,7 @@ export interface LearnEnglishBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'learnEnglish';
+  blockType: 'sixpillarsblock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -808,10 +844,11 @@ export interface FriendsCornerBlock {
     };
     [k: string]: unknown;
   } | null;
-  backgroundColor?:
-    | ('bg-white' | 'bg-gray-200' | 'bg-black text-white' | 'bg-[#D5E8DE]' | 'bg-[#F0F0F0]' | 'bg-[#072C49] text-white')
-    | null;
-  image: number | Media;
+  images: {
+    image?: (number | null) | Media;
+    link?: string | null;
+    id?: string | null;
+  }[];
   reviews?:
     | {
         title: string;
@@ -829,11 +866,21 @@ export interface FriendsCornerBlock {
  * via the `definition` "FaqBlock".
  */
 export interface FaqBlock {
-  title?: string | null;
-  faqs?:
+  accordion?:
     | {
-        question: string;
-        answere: string;
+        title?: string | null;
+        faqs?:
+          | {
+              question: string;
+              answere: {
+                address: string;
+                phone: string;
+                email: string;
+                id?: string | null;
+              }[];
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -893,6 +940,45 @@ export interface GetinTouchBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'getintouch';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornersPakistanAddresses".
+ */
+export interface CornersPakistanAddresses {
+  places?:
+    | {
+        placeName: string;
+        addressInfo: {
+          campusName: string;
+          fullAddress: string;
+          contactNumber: string;
+          emailAddress: string;
+          mapaddress?: string | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cornerspakistanaddress';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactPageBlock".
+ */
+export interface ContactPageBlock {
+  title?: string | null;
+  contactdesc?: string | null;
+  visitaddress?: string | null;
+  phoneno?: string | null;
+  contactemail?: string | null;
+  form?: (number | null) | Form;
+  websitelink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactpage';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1078,7 +1164,12 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        media?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
         backgroundColor?: T;
       };
   layout?:
@@ -1091,11 +1182,15 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         counter?: T | CountersBlockSelect<T>;
         section?: T | SectionsHeadingSelect<T>;
+        cornercardsblock?: T | CornerCardsBlockSelect<T>;
+        homevideoblock?: T | HomeVideoBlockSelect<T>;
         upcomingevents?: T | UpComingEventsBlockSelect<T>;
-        learnEnglish?: T | LearnEnglishBlockSelect<T>;
+        sixpillarsblock?: T | SixPillarsBlockSelect<T>;
         friendscorner?: T | FriendsCornerBlockSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
         getintouch?: T | GetinTouchBlockSelect<T>;
+        cornerspakistanaddress?: T | CornersPakistanAddressesSelect<T>;
+        contactpage?: T | ContactPageBlockSelect<T>;
       };
   meta?:
     | T
@@ -1224,6 +1319,32 @@ export interface SectionsHeadingSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornerCardsBlock_select".
+ */
+export interface CornerCardsBlockSelect<T extends boolean = true> {
+  cards?:
+    | T
+    | {
+        desc?: T;
+        image?: T;
+        linkText?: T;
+        linkUrl?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HomeVideoBlock_select".
+ */
+export interface HomeVideoBlockSelect<T extends boolean = true> {
+  video?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "UpComingEventsBlock_select".
  */
 export interface UpComingEventsBlockSelect<T extends boolean = true> {
@@ -1247,15 +1368,14 @@ export interface UpComingEventsBlockSelect<T extends boolean = true> {
         public?: T;
         id?: T;
       };
-  link?: T;
   id?: T;
   blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "LearnEnglishBlock_select".
+ * via the `definition` "SixPillarsBlock_select".
  */
-export interface LearnEnglishBlockSelect<T extends boolean = true> {
+export interface SixPillarsBlockSelect<T extends boolean = true> {
   title?: T;
   richText?: T;
   cards?:
@@ -1277,8 +1397,13 @@ export interface FriendsCornerBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   richText?: T;
-  backgroundColor?: T;
-  image?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        link?: T;
+        id?: T;
+      };
   reviews?:
     | T
     | {
@@ -1295,12 +1420,24 @@ export interface FriendsCornerBlockSelect<T extends boolean = true> {
  * via the `definition` "FaqBlock_select".
  */
 export interface FaqBlockSelect<T extends boolean = true> {
-  title?: T;
-  faqs?:
+  accordion?:
     | T
     | {
-        question?: T;
-        answere?: T;
+        title?: T;
+        faqs?:
+          | T
+          | {
+              question?: T;
+              answere?:
+                | T
+                | {
+                    address?: T;
+                    phone?: T;
+                    email?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
         id?: T;
       };
   image?: T;
@@ -1341,6 +1478,45 @@ export interface GetinTouchBlockSelect<T extends boolean = true> {
   subDescription?: T;
   richText?: T;
   backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CornersPakistanAddresses_select".
+ */
+export interface CornersPakistanAddressesSelect<T extends boolean = true> {
+  places?:
+    | T
+    | {
+        placeName?: T;
+        addressInfo?:
+          | T
+          | {
+              campusName?: T;
+              fullAddress?: T;
+              contactNumber?: T;
+              emailAddress?: T;
+              mapaddress?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactPageBlock_select".
+ */
+export interface ContactPageBlockSelect<T extends boolean = true> {
+  title?: T;
+  contactdesc?: T;
+  visitaddress?: T;
+  phoneno?: T;
+  contactemail?: T;
+  form?: T;
+  websitelink?: T;
   id?: T;
   blockName?: T;
 }
