@@ -16,10 +16,10 @@ import type {
   MediaBlock as MediaBlockProps,
 } from '@/payload-types'
 import { cn } from '@/utilities/cn'
-import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
-import { CallToActionBlock } from '@/blocks/CallToAction/Component'
-import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { BannerBlock } from '@/blocks/Banner/Component'
+import { CodeBlock, CodeBlockProps } from '@/blocks/blocks/Code/Component'
+import { CallToActionBlock } from '@/blocks/blocks/CallToAction/Component'
+import { MediaBlock } from '@/blocks/blocks/MediaBlock/Component'
+import { BannerBlock } from '@/blocks/blocks/Banner/Component'
 
 type NodeTypes =
   | DefaultNodeTypes

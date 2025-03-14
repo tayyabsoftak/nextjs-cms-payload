@@ -9,22 +9,12 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
-import { Archive } from '@/blocks/ArchiveBlock/config'
-import { CallToAction } from '@/blocks/CallToAction/config'
 import { ContactPageBlock } from '@/blocks/ContactPageBlock/config'
-import { Content } from '@/blocks/Content/config'
 import { CornersPakistanAddresses } from '@/blocks/CornersPakistanAddressBlock/config'
 import { Counters } from '@/blocks/CounterBlock/config'
 import { CornerCardsBlock } from '@/blocks/CustomHtml/config'
 import { FaqBlock } from '@/blocks/FaqBlock/config'
-import { FormBlock } from '@/blocks/Form/config'
-import { FriendsCornerBlock } from '@/blocks/FriendsCornerBlock/config'
-import { GetinTouchBlock } from '@/blocks/GetinTouchBlock/config'
-import { HomeVideoBlock } from '@/blocks/HomeVideoBlock/config'
-import { MediaBlock } from '@/blocks/MediaBlock/config'
-import { Sections } from '@/blocks/SectionHeading/config'
 import { SixPillarsBlock } from '@/blocks/SixPillarsBlock/config'
-import { UpComingEventsBlock } from '@/blocks/UpComingEventsBlock/config'
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -32,6 +22,16 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { CallToAction } from '@/blocks/blocks/CallToAction/config'
+import { Content } from '@/blocks/blocks/Content/config'
+import { MediaBlock } from '@/blocks/blocks/MediaBlock/config'
+import { Archive } from '@/blocks/blocks/ArchiveBlock/config'
+import { FormBlock } from '@/blocks/blocks/Form/config'
+import { Sections } from '@/app/blocks/SectionHeading/config'
+import { HomeVideoBlock } from '@/blocks/HomeVideoBlock/config'
+import { UpComingEventsBlock } from '@/app/blocks/UpComingEventsBlock/config'
+import { FriendsCornerBlock } from '@/app/blocks/FriendsCornerBlock/config'
+import { GetinTouchBlock } from '@/app/blocks/GetinTouchBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',

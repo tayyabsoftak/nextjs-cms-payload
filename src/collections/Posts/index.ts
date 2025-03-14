@@ -24,9 +24,9 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
-import { Banner } from '@/blocks/Banner/config'
-import { Code } from '@/blocks/Code/config'
-import { MediaBlock } from '@/blocks/MediaBlock/config'
+import { Banner } from '@/blocks/blocks/Banner/config'
+import { Code } from '@/blocks/blocks/Code/config'
+import { MediaBlock } from '@/blocks/blocks/MediaBlock/config'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',

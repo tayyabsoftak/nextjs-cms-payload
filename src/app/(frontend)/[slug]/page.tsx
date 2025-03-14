@@ -13,7 +13,11 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+<<<<<<< HEAD
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+=======
+import { RenderBlocks } from '@/app/blocks/RenderBlocks'
+>>>>>>> 5159a77937c490a6f651b32d917b91a73e516e1a
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
